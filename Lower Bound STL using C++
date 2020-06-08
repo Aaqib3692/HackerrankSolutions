@@ -1,0 +1,45 @@
+// Program for C++ STL Vector lower_bound functions
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    int n, ele, nquery,val;
+    cin>>n;
+    vector<int> v;
+
+    for(int i = 0; i < n; i++)
+    {
+        cin>>ele;
+        v.push_back(ele);
+    }
+
+    cin>>nquery;
+    // In order to avoid Timeout Error try to define STD iterator inside for loop  
+    // lower_bound returns an iterator pointing to the first element in the range [first,last) which
+       has a value not less than ‘val’.
+    
+    for(int i = 0; i < nquery; i++ )
+    {
+        cin>>val;
+        vector<int> :: iterator low = lower_bound(v.begin(), v.end(), val) ;(Assigning lower bound value to low iterator)
+
+        if(v[low - v.begin()] == val) // This calculates whether values exist in vector or not
+        {
+            cout<<"Yes"<<" "<<low - v.begin() + 1<<endl;
+        }
+        else
+        {
+            cout<<"No"<<" "<<low - v.begin() + 1<<endl;
+        }
+        
+    } 
+
+    return 0;
+}
