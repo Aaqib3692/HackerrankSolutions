@@ -1,0 +1,67 @@
+""Its not me, who i'm underneath !
+   But what i do that defines me ! ""
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <set>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */  
+
+    int nquery,ele,val;
+
+    set<int> s;
+    set<int> :: iterator itr; // Setting iterator of type "sets"
+    
+
+    cin>>nquery;
+
+    for(int i = 0; i < nquery; i++)
+    {
+        cin>>ele;
+
+      switch(ele)
+     {
+        case 1 : cin>>val;
+                 s.insert(val);  // To add or insert an element in sets
+                 break;
+
+        case 2 :
+                 cin>>val;
+                 itr = s.find(val); // Iterator To find an element in array sets 
+                 
+                 if( itr != s.end()) //If find an element then erase from the sets
+                 {
+                     s.erase(val);
+                 }
+                 else
+                 {
+                     itr == s.end(); //Else do Nothing to the sets
+                 }
+                 break;
+
+        case 3 : 
+                 cin>>val;
+                 itr = s.find(val);  //Check if an element exists in the sets
+                 if(itr != s.end())  // If find then print "Yes"
+                 {
+                     cout<<"Yes"<<endl;
+                 }
+                 else 
+                 {
+                     cout<<"No"<<endl; // Print "No"
+                 }
+
+                 break;
+
+     }
+   }  
+
+  return 0;
+ }
+
