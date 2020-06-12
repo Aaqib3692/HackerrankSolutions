@@ -1,0 +1,65 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <set>
+#include <map>
+#include <algorithm>
+using namespace std;
+
+int main()
+ {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+
+    int n;
+    map<string, int> m;
+    cin>>n;
+
+    for(int i = 0; i < n; i++ )
+    {
+        int ele;
+        cin>>ele;
+        switch(ele)
+        {
+            case 1 :{
+                     string name;
+                     int marks;
+                     cin>>name>>marks;
+                     map<string, int> :: iterator itr1 = m.find(name);
+                     
+                     if(itr1 == m.end()) // if name doesn't exist then student details will insert
+                     {
+                         m.insert(make_pair(name, marks));
+                     }
+                     else   // IF name exists then their marks will be added 
+                     {
+                         itr1->second = itr1->second + marks;
+                     }
+                     break;
+                    }
+
+            case 2 :{                // To erase student records
+                     string name;
+                     cin>>name;
+                     m.erase(name);
+                     break;
+                    }
+
+            case 3 :{                // To display marks of  enrolled student
+                     string name;
+                     cin>>name;
+                     map<string, int> :: iterator itr = m.find(name);
+                     if( itr == m.end())  // If student doesn't exist then print " 0 "
+                     {
+                         cout<<"0"<<endl;
+                     }
+                     else                  // Otherwise print marks of respective student
+                     {
+                         cout<<itr->second<<endl;
+                     }
+                    break;
+                    }
+            }        
+    }
+    return 0;
+}
