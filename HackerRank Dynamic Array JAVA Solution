@@ -1,0 +1,48 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution
+{
+    public static void main(String[] args) 
+    {
+        Scanner input  = new Scanner(System.in); 
+        int lastAnswer = 0;
+        int nS         = input.nextInt();  // No. of Sequence
+        int nQ         = input.nextInt();  // No. of Queries
+        int type, x, y, index;
+
+        ArrayList<Integer>[] seqList = new ArrayList[nS];
+
+        while(nQ --> 0)
+        {
+            type       = input.nextInt(); // Type of Query i.e 1 or 2
+            x          = input.nextInt(); // x value
+            y          = input.nextInt(); // y value
+            index      = (x ^ lastAnswer) % nS; 
+
+            switch(type)
+            {
+                case 1 :  // If the index is null, creates a new ArrayList and set seqList at that index to the new ArrayList 
+                             populated with value y
+                          if(seqList[index] == null)
+                          {
+                              ArrayList<Integer> myList = new ArrayList<>();
+                              myList.add(y);
+                              seqList[index] = myList;
+                          }
+                          else
+                          {
+                              // If already exists, just add the y value.
+                              seqList[index].add(y);
+                          }
+                          break;
+
+                case 2 : // Find the value at (y % size) and set lastAnswer equal to it. Print the new lastAnswer on a new line 
+                         System.out.println(lastAnswer=seqList[index].get(y%seqList[index].size()));              
+                         break;
+
+            }
+        }
+
+    }
+}
