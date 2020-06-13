@@ -1,0 +1,41 @@
+//The 2 types of queries that can be performed on your list of sequences (seqList) are described below:
+  //Query: 1 x y
+    1. Find the sequence, seq, at index ((x ^(XOR)lastAnswer) % N) in seqList.
+       Append integer y to sequence seq.
+       
+  //Query: 2 x y
+    2. Find the sequence, seq, at index ((x ^(XOR)lastAnswer) % N) in seqList.
+ //Find the value of element "y%size" in seq (where size is the size of seq) and assign it to lastAnswer.
+ //Print the new value of lastAnswer on a new line
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int lastAnswer = 0, nS, nQ, type, x, y, index; /* nS means number of Sequnces
+    cin>>nS;                                          nQ means Number of Queries
+    cin>>nQ;                                          type means either 1 or 2
+    vector<int> seqList[nS];                          x means x value
+                                                      y means y value
+                                                      index means calcaulation XOR value 
+    for(int i = 0; i < nQ; i++)
+    {
+        cin>>type>>x>>y;
+        index = (x ^ lastAnswer) % nS;             // XOR value calculation
+
+        switch(type)
+        {
+            case 1 :
+                     seqList[index].push_back(y);   //Inserting of element in vector at particular index
+                     break;
+
+            case 2 : int pos = y % ((int)seqList[index].size());  // Calculating of position index with typecasting of 'int' type.
+                     lastAnswer = seqList[index][pos];
+                     cout<<lastAnswer<<endl;
+                     break;
+        }
+    }
+
+    return 0;
+}
